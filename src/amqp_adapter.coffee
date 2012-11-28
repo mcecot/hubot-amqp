@@ -1,8 +1,7 @@
+{Adapter,Robot} = require 'hubot'
+
 util = require('util')
 amqp = require('amqp')
-
-Robot   = require("hubot").robot()
-Adapter = require("hubot").adapter()
 
 class Amqp extends Adapter
   constructor: (robot) ->
