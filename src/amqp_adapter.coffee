@@ -1,4 +1,4 @@
-{Adapter,Robot} = require 'hubot'
+{Adapter,Robot,TextMessage,EnterMessage,LeaveMessage} = require 'hubot'
 
 util = require('util')
 amqp = require('amqp')
@@ -58,9 +58,10 @@ class Amqp extends Adapter
       
             user = @userForId '1', name: msg.user_name, reply_to: deliveryInfo.replyTo
 
-            message = new Robot.TextMessage user, msg.question
+            #message = new Robot.TextMessage user, msg.question
 
-            @receive message
+            #@receive message
+            @receive new TextMessage(user, msg.question)
 
 exports.use = (robot) ->
   new Amqp robot
